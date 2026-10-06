@@ -1,0 +1,49 @@
+{{#if destaque}}
+  <div class="hero-banner" style="background-image: linear-gradient(to right, rgba(20, 20, 20, 0.95) 30%, rgba(20, 20, 20, 0.3)), 
+    url('https://image.tmdb.org/t/p/original{{#if destaque.backdrop_path}}{{destaque.backdrop_path}}{{else}}{{destaque.poster_path}}{{/if}}' );">
+    
+    <div class="hero-content">
+      <h1 class="hero-title">{{destaque.title}}</h1>
+      <p class="hero-description">{{destaque.overview}}</p>
+      <div class="hero-buttons">
+        <a href="/filme/{{destaque.id}}" class="button btn-orange">Ver Detalhes</a>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+<div class="section-container">
+  
+  {{#if busca}}
+    <h2>Resultados para: "<span style="color: #ff5200;">{{busca}}</span>"</h2>
+  {{else}}
+    <h2>Filmes Populares</h2>
+  {{/if}}
+  
+  {{#if filmes.length}}
+    <div class="container-filmes">
+      {{#each filmes}}
+        <div class="card-filme">
+          {{#if poster_path}}
+            <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}">
+          {{else}}
+            <div style="height: 300px; background: #333; display: flex; align-items: center; justify-content: center;">Sem Imagem</div>
+          {{/if}}
+
+          <div class="card-info">
+            <h3>{{title}}</h3>
+            <p class="nota">⭐ {{vote_average}}</p>
+            <a href="/filme/{{id}}" class="button btn-card">Detalhes</a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div style="text-align: center; padding: 60px 20px; background: #1a202c; border-radius: 12px; margin-top: 20px;">
+      <h3 style="font-size: 1.5em; margin-bottom: 10px;">🔍 Nenhum filme encontrado</h3>
+      <p style="color: #a0aab2; margin-bottom: 20px;">Não encontramos nenhum resultado para "<strong style="color: #fff;">{{busca}}</strong>". Tente buscar por outro nome.</p>
+      <a href="/" class="button btn-orange">Voltar para o Início</a>
+    </div>
+  {{/if}}
+
+</div>

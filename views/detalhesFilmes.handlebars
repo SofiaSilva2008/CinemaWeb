@@ -1,0 +1,99 @@
+<div class="section-container detalhes-container">
+    <div class="detalhes-filme">
+
+        <!-- Poster -->
+        <div class="poster-detalhes">
+            {{#if filme.poster_path}}
+                <img
+                    src="https://image.tmdb.org/t/p/w500{{filme.poster_path}}"
+                    alt="Poster de {{filme.title}}"
+                >
+            {{else}}
+                <div class="sem-poster">
+                    Sem imagem
+                </div>
+            {{/if}}
+        </div>
+
+        <!-- Informações -->
+        <div class="info-detalhes">
+
+            <h1>{{filme.title}}</h1>
+
+            <p class="nota-filme">
+                ⭐ {{filme.vote_average}}
+            </p>
+
+            <!-- Gêneros -->
+            {{#if filme.genres}}
+                <div class="generos-filme">
+                    {{#each filme.genres}}
+                        <span class="genero">
+                            {{this.name}}
+                        </span>
+                    {{/each}}
+                </div>
+            {{/if}}
+
+            <!-- Data -->
+            {{#if filme.dataFormatada}}
+                <p>
+                    <strong>Data de lançamento:</strong>
+                    {{filme.dataFormatada}}
+                </p>
+            {{/if}}
+
+            <!-- Duração -->
+            {{#if filme.duracaoFormatada}}
+                <p>
+                    <strong>Duração:</strong>
+
+                    {{filme.duracaoFormatada}} minutos
+                </p>
+            {{/if}}
+
+            <!-- Sinopse -->
+            <div class="sinopse">
+                <h2>Sinopse</h2>
+
+                {{#if filme.overview}}
+                    <p>{{filme.overview}}</p>
+                {{else}}
+                    <p>Sinopse não disponível.</p>
+                {{/if}}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="onde-assistir">
+        <h3>Onde Assistir</h3>
+
+        {{#if assistir.flatrate.length}}
+            <h4>Streaming:</h4>
+            <div class="provedores">
+                {{#each assistir.flatrate}}
+                    <img 
+                        src="https://image.tmdb.org/t/p/w92{{this.logo_path}}" 
+                        alt="{{this.provider_name}}" 
+                        title="{{this.provider_name}}"
+                        class="logo-provider"
+                    />
+                {{/each}}
+            </div>
+        {{else}}
+            <p>Não disponível em plataformas de streaming no momento.</p>
+        {{/if}}
+
+        {{#if assistir.linkOficial}}
+            <a href="{{assistir.linkOficial}}" target="_blank" rel="noopener" class="button btn-card">
+                Ver mais detalhes no JustWatch
+            </a>
+        {{/if}}
+    </div>
+
+    <br>
+    <a href="/filmes" class="button btn-card">← Voltar para filmes</a>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="section-container" style="max-width: 600px; margin: 40px auto;">
+  <h2>⚙️ Meu Perfil</h2>
+
+  {{#if sucesso}}
+    <p style="background: rgba(0, 255, 0, 0.2); color: #4dff4d; padding: 10px; border-radius: 5px;">{{sucesso}}</p>
+  {{/if}}
+
+  {{#if erro}}
+    <p style="background: rgba(255, 0, 0, 0.2); color: #ff4d4d; padding: 10px; border-radius: 5px;">{{erro}}</p>
+  {{/if}}
+
+  <form action="/perfil/editar" method="POST" style="margin-top: 20px;">
+    <div style="margin-bottom: 15px;">
+      <label>Nome:</label>
+      <input type="text" name="nome" value="{{usuario.nome}}" required style="width: 100%; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 5px;">
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label>E-mail:</label>
+      <input type="email" name="email" value="{{usuario.email}}" required style="width: 100%; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 5px;">
+    </div>
+
+    <button type="submit" class="button btn-orange">Salvar Alterações</button>
+  </form>
+
+  <hr style="margin: 30px 0; border-color: #333;">
+
+  <div style="background: rgba(255, 0, 0, 0.1); padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 0, 0, 0.3);">
+    <h3 style="color: #ff4d4d;">Excluir Minha Conta</h3>
+    <p style="font-size: 0.9em; margin-bottom: 15px;">Atenção: Esta ação é irreversível.</p>
+    
+    <form action="/perfil/deletar" method="POST" onsubmit="return confirm('Tem certeza absoluta que deseja deletar sua conta?');">
+      <button type="submit" style="background: #e50914; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Excluir Conta Permanentemente</button>
+    </form>
+  </div>
+</div>

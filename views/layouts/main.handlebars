@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinema Web</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-es">
+      <a href="/" class="logo">🎬 <span>Cinema</span>Web</a>
+      <nav class="nav-links">
+        <a href="/">Início</a>
+        <a href="/filmes">Filmes</a>
+      </nav>
+    </div>
+
+    <div class="nav-di">
+      <form action="/buscar" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Buscar filme..." required>
+        <button type="submit">🔍</button>
+      </form>
+
+      {{!-- ÁREA DINÂMICA DO USUÁRIO --}}
+      {{#if usuarioLogado}}
+        {{!-- Exibe quando o usuário está LOGADO --}}
+        <a href="/perfil" class="btn-perfil" title="Meu Perfil">
+          <img src="/images/usuario.png" alt="Ícone de Usuário" class="icon-usuario">
+        </a>
+
+        {{#if eAdmin}}
+          {{!-- Exibe apenas para ADMINISTRADORES --}}
+          <a href="/admin/usuarios" class="btn-admin" title="Painel Admin">Admin</a>
+        {{/if}}
+
+        <a href="/logout" class="btn-logout" title="Sair da Conta">Sair</a>
+
+      {{else}}
+        {{!-- Exibe quando o usuário está DESLOGADO --}}
+        <a href="/login" class="button btn-orange btn-login">Entrar</a>
+      {{/if}}
+    </div>
+  </header>
+
+  <main>
+    {{{body}}}
+  </main>
+
+</body>
+</html>

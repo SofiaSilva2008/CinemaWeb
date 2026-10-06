@@ -1,0 +1,28 @@
+<div class="section-container" style="padding-top: 30px;">
+    <h1>Painel Admin: Gestão de Usuários</h1>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 25px; background: #1a1a1a;">
+        <thead>
+        <tr style="background: #252525; text-align: left;">
+            <th style="padding: 12px;">ID</th>
+            <th style="padding: 12px;">Nome</th>
+            <th style="padding: 12px;">E-mail</th>
+            <th style="padding: 12px;">É Admin?</th>
+            <th style="padding: 12px;">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each usuarios}}
+            <tr style="border-bottom: 1px solid #333;">
+            <td style="padding: 12px;">{{id}}</td>
+            <td style="padding: 12px;">{{nome}}</td>
+            <td style="padding: 12px;">{{email}}</td>
+            <td style="padding: 12px;">{{#if isAdmin}}✅ Sim{{else}}❌ Não{{/if}}</td>
+            <td style="padding: 12px;">
+                <a href="/admin/usuarios/deletar/{{id}}" style="color: #e50914;" onclick="return confirm('Deletar este usuário?')">Excluir</a>
+            </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
