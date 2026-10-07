@@ -87,3 +87,11 @@ O CinemaWeb permite pesquisar filmes, filtrar por gênero, consultar informaçõ
 - **Git**
 - **GitHub**
 - **VS Code**
+
+### Instalação
+Clone o repositório e instale as dependências:
+
+```bash
+git clone https://github.com/SofiaSilva2008/CinemaWeb.git
+cd CinemaWeb
+npm install
