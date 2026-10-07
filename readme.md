@@ -88,10 +88,51 @@ O CinemaWeb permite pesquisar filmes, filtrar por gênero, consultar informaçõ
 - **GitHub**
 - **VS Code**
 
-### Instalação
-Clone o repositório e instale as dependências:
+## Instalação
+
+### Pré-requisitos
+- Node.js e npm instalados
+- Chave de API do TMDB
+
+### Baixar o projeto e instalar as dependências
 
 ```bash
 git clone https://github.com/SofiaSilva2008/CinemaWeb.git
 cd CinemaWeb
 npm install
+```
+
+## Configuração
+
+Crie um arquivo `.env` a partir do modelo:
+
+```bash
+cp .env.example .env
+```
+
+Abra o `.env` e preencha as variáveis com seus próprios valores:
+
+```env
+PORT=3000
+TMDB_API_KEY=sua_chave_da_api_tmdb
+SESSION_SECRET=um_segredo_aleatorio_longo
+ADMIN_EMAILS=admin@exemplo.com
+```
+
+Para obter uma chave da API, crie uma conta no [TMDB](https://www.themoviedb.org/ ) e solicite uma chave nas configurações de desenvolvedor.
+
+`ADMIN_EMAILS` aceita e-mails separados por vírgula. Se não for usar essa configuração, deixe o valor vazio.
+
+## Banco de dados
+
+O projeto usa SQLite. Ao iniciar, o Sequelize sincroniza os modelos e cria ou utiliza o arquivo `database.sqlite` na pasta do projeto. Esse arquivo é local e está excluído do Git pelo `.gitignore`.
+
+## Como iniciar
+
+Depois de configurar o `.env`, execute:
+
+```bash
+npm start
+```
+
+A aplicação ficará disponível em `http://localhost:3000`, ou na porta definida pela variável `PORT`.
