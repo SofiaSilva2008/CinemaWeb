@@ -1,10 +1,10 @@
 {
   "name": "cinema-web",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Aplicação web para descoberta e consulta de filmes",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
